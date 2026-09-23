@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>تفاصيل الدفع</title>
+    <link rel="stylesheet" href="css/payment-intro.css">
+</head>
+<body>
+    <main class="intro-page">
+        <header class="brand-header">
+            <img src="images/logo.jpg" alt="Boubyan">
+            <h1>مرحبا</h1>
+        </header>
+
+        <section class="invoice-card" aria-live="polite">
+            <p class="invoice-date" id="invoiceDate"></p>
+            <div class="customer-icon" aria-hidden="true"><span></span></div>
+            <h2 id="merchantName"></h2>
+            <p class="payment-type">أخرى</p>
+            <p class="invoice-amount"><span id="currency"></span> <strong id="amount"></strong></p>
+            <p class="invoice-message" id="customerMessage" hidden></p>
+        </section>
+
+        <section class="actions" aria-label="إجراءات الدفع">
+            <a class="pay-button" id="payButton" href="#">دفع</a>
+            <button class="reject-button" id="rejectButton" type="button">رفض طلب الدفع</button>
+            <p class="feedback" id="feedback" role="status"></p>
+        </section>
+    </main>
+    <div class="payment-loading" id="paymentLoading" aria-hidden="true">
+        <span class="payment-spinner" role="img" aria-label="جاري التحميل"></span>
+    </div>
+    <script src="js/payment-intro.js"></script>
+</body>
+</html>

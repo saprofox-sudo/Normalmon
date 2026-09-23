@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+:root {
+    --page: #f7f9fa;
+    --text: #5d6266;
+    --red: #d0072f;
+    --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+body { margin: 0; background: var(--page); color: var(--text); font-family: Cairo, Arial, sans-serif; }
+.intro-page { width: 100%; min-height: 100svh; margin: 0 auto; padding: clamp(32px, 7svh, 88px) clamp(14px, 4vw, 40px) 36px; display: flex; flex-direction: column; align-items: center; }
+.brand-header { text-align: center; }
+.brand-header img { display: block; width: clamp(125px, 18vw, 170px); height: auto; margin: 0 auto clamp(34px, 5vh, 58px); mix-blend-mode: multiply; }
+.brand-header h1 { margin: 0; font-size: clamp(31px, 4vw, 40px); line-height: 1; font-weight: 600; letter-spacing: 0; }
+.invoice-card { width: 100%; max-width: 650px; margin-top: clamp(25px, 5svh, 52px); padding: clamp(24px, 4vw, 42px) clamp(14px, 4vw, 30px) 30px; background: var(--card); border-radius: clamp(20px, 4vw, 30px); box-shadow: 0 12px 24px rgba(37, 44, 47, .08); text-align: center; }
+.invoice-date { margin: 0 0 clamp(38px, 7vh, 70px); direction: ltr; font-family: Arial, sans-serif; font-size: clamp(18px, 3vw, 27px); color: var(--text); }
+.customer-icon { width: clamp(116px, 18vw, 150px); height: clamp(116px, 18vw, 150px); margin: 0 auto clamp(25px, 4vh, 38px); border: 8px solid #f5f6f7; border-radius: 50%; background: linear-gradient(#d8d8d8, #b7b7b7); position: relative; }
+.customer-icon:before { content: ""; position: absolute; width: 34%; height: 34%; border: 7px solid #fff; border-radius: 50%; top: 21%; left: 28%; }
+.customer-icon span { position: absolute; width: 55%; height: 29%; border: 7px solid #fff; border-bottom: 0; border-radius: 45px 45px 0 0; left: 18%; bottom: 15%; }
+.invoice-card h2 { margin: 0; font-size: clamp(27px, 5vw, 42px); line-height: 1.25; font-weight: 700; letter-spacing: 0; overflow-wrap: anywhere; }
+.payment-type { margin: 18px 0 20px; font-size: clamp(18px, 3vw, 22px); }
+.invoice-amount { margin: 0; direction: rtl; font-size: clamp(34px, 7vw, 58px); line-height: 1.2; font-weight: 400; color: var(--text); }
+.invoice-amount strong { font-weight: 400; direction: ltr; display: inline-block; }
+.invoice-message { max-width: 500px; margin: 27px auto 0; padding: 12px 15px; border-radius: 10px; background: #f5f6f7; font-size: 15px; }
+.actions { width: 100%; max-width: 566px; margin-top: clamp(30px, 7svh, 72px); text-align: center; }
+.pay-button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: clamp(58px, 9vw, 74px); border-radius: 45px; background: var(--red); color: #fff; text-decoration: none; font-size: clamp(21px, 3vw, 25px); font-weight: 600; box-shadow: 0 7px 0 rgba(158, 0, 30, .05); }
+.pay-button:active { transform: translateY(2px); }
+.reject-button { border: 0; margin-top: clamp(25px, 4vh, 40px); background: transparent; color: var(--text); font: 400 clamp(19px, 3vw, 24px) Cairo, Arial, sans-serif; cursor: pointer; }
+.reject-button:hover { color: var(--red); }
+.feedback { min-height: 28px; margin: 23px 0 0; font-size: 15px; }
+.payment-loading { position: fixed; inset: 0; z-index: 10; display: none; place-items: center; background: rgba(247,249,250,.86); }
+.payment-loading.is-visible { display: grid; }
+.payment-spinner { width: 62px; height: 62px; display: block; border: 8px solid #d6d9dc; border-top-color: #0077d5; border-radius: 50%; animation: payment-spin .7s linear infinite; }
+@keyframes payment-spin { to { transform: rotate(360deg); } }
+.pay-button.is-loading { pointer-events: none; opacity: .65; }
+@media (min-width: 768px) {
+    .intro-page { padding-top: clamp(42px, 8svh, 88px); }
+    .invoice-card { margin-top: clamp(28px, 5svh, 52px); }
+}
+
+@media (max-width: 540px) {
+    .intro-page { padding-top: 34px; padding-bottom: 28px; }
+    .invoice-date { white-space: normal; }
+}
+
+@media (max-width: 380px) {
+    .intro-page { padding-left: 12px; padding-right: 12px; }
+    .invoice-date { font-size: 16px; }
+    .invoice-card { padding-left: 10px; padding-right: 10px; }
+}
+
+@media (max-height: 700px) {
+    .intro-page { padding-top: 24px; }
+    .brand-header img { margin-bottom: 24px; }
+    .invoice-card { margin-top: 22px; }
+    .invoice-date { margin-bottom: 30px; }
+    .customer-icon { margin-bottom: 20px; }
+    .actions { margin-top: 28px; }
+}

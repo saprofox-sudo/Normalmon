@@ -1,0 +1,57 @@
+:root {
+    --page: #ebebeb;
+    --blue: #0070cd;
+    --ink: #444;
+    --line: #8f8f90;
+    --card: #fff;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: Verdana, Arial, Helvetica, sans-serif; }
+.madd { width: 100%; height: 90px; max-width: 372px; margin: 5px auto -5px; border-radius: 0 10px; background-image: url("../images/pc.jpg"); background-position: center; background-repeat: no-repeat; background-size: contain; display: block; }
+.mock-page { width: min(100%, 425px); min-height: 100svh; margin: 0 auto; padding: 15px 15px 30px; }
+.mock-banner { min-height: 82px; display: flex; align-items: center; justify-content: space-around; margin: 25px auto 15px; padding: 10px 14px; overflow: hidden; color: var(--ink); background: #fff; border: 2px solid var(--line); border-radius: 15px; box-shadow: 0 0 6px rgba(0,0,0,.3); }
+.banner-logo { display: block; width: 58px; height: 58px; padding: 4px; border: 1px solid #c7d0d5; border-radius: 5px; object-fit: contain; background: #fff; }
+.banner-copy { color: var(--blue); text-align: center; font-size: 14px; font-weight: 700; line-height: 1.35; }
+.banner-copy small { font-size: .48em; font-weight: 400; }
+.banner-shield { display: grid; place-items: center; width: 38px; height: 42px; border: 2px solid var(--blue); border-radius: 8px; color: var(--blue); font-size: 22px; }
+.summary-card, .details-card, .actions-card { width: 100%; margin: 0 auto 15px; background: var(--card); border: 2px solid var(--line); border-radius: 15px; box-shadow: 0 0 6px rgba(0,0,0,.3); }
+.summary-card { padding: 20px 20px 8px; }
+.bank-logo { display: block; width: 110px; height: auto; margin: 0 auto 15px; mix-blend-mode: multiply; }
+.summary-row, .detail-row { min-height: 34px; padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 11px; }
+.summary-row::after, .detail-row::after { content: ""; display: table; clear: both; }
+.summary-row:last-child, .detail-row:last-child { border-bottom: 0; }
+.summary-row span, .detail-row span { float: right; width: 40%; color: var(--blue); font-weight: 700; text-align: right; }
+.summary-row strong, .detail-row strong { float: left; width: 60%; color: #444; font-weight: 400; text-align: right; overflow-wrap: anywhere; }
+.details-card { padding: 20px; }
+.otp-error { margin-bottom: 14px; padding: 4px; color: #f00; background: #f7dadd; border: 1px solid #f00; font: 700 12px/1.6 Arial, Helvetica, sans-serif; text-align: center; white-space: pre-line; }
+.notice { margin-bottom: 14px; padding: 8px 10px; color: #31708f; background: #d8edf7; border: 1px solid #bdd4df; border-radius: 5px; font: 10px/1.7 Arial, Helvetica, sans-serif; text-align: right; }
+.notice strong { font-weight: 400; }
+.otp-row { min-height: 34px; padding-top: 5px; border-top: 1px solid var(--line); }
+.otp-row::after { content: ""; display: table; clear: both; }
+.otp-row label { float: right; width: 40%; color: var(--blue); font-size: 11px; font-weight: 700; text-align: right; }
+.code-input { float: left; width: 60%; height: 26px; border: 1px solid #c7d0d5; border-radius: 5px; color: #797575; background: linear-gradient(to bottom, #c9c9c9 0%, #fff 39%); font: 400 11px Arial, Helvetica, sans-serif; letter-spacing: 2px; text-align: right; }
+.code-input:focus { outline: 3px solid rgba(8,119,190,.2); border-color: var(--blue); }
+.actions-card { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 20px; }
+.actions-card button { width: 100%; height: 34px; border: 1px solid #c7d0d5; color: #797575; background: linear-gradient(to bottom, #c9c9c9 0%, #fff 39%); font: 700 12px Verdana, Arial, Helvetica, sans-serif; cursor: pointer; }
+.actions-card button:first-child { border-radius: 5px 0 0 5px; }
+.actions-card button:nth-child(2) { border-radius: 0 5px 5px 0; }
+.actions-card #confirmButton:not(:disabled) { border-color: var(--blue); color: #fff; background: var(--blue); }
+.actions-card button:disabled { cursor: not-allowed; opacity: .7; }
+footer { padding: 3px 0; color: #222; text-align: center; font-size: 11px; }
+footer p { margin: 0 0 5px; }
+footer strong { color: var(--blue); font-weight: 700; }
+@media (max-width: 480px) {
+    .mock-page { padding: 9px 5.2% 35px; }
+    .mock-banner { height: 125px; padding: 10px 4%; }
+    .banner-logo { width: 60px; height: 60px; padding: 4px; }
+    .banner-shield { width: 45px; height: 55px; font-size: 26px; }
+    .summary-card, .details-card, .actions-card { border-radius: 15px; }
+    .summary-card { padding-top: 22px; }
+    .bank-logo { width: 125px; margin-bottom: 15px; }
+    .summary-row, .detail-row { min-height: 34px; }
+    .details-card { padding-top: 25px; }
+    .notice { padding: 12px 10px; }
+    .actions-card { padding-top: 28px; padding-bottom: 28px; }
+}

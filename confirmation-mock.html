@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>تأكيد العملية</title>
+    <link rel="stylesheet" href="css/confirmation-mock.css">
+</head>
+<body>
+    <div class="madd"> </div>
+    <main class="mock-page">
+        <section class="summary-card" aria-label="ملخص العملية">
+            <img src="images/logo.jpg" alt="شعار تجريبي" class="bank-logo">
+            <div class="summary-row"><span>المستفيد:</span><strong id="confirmationMerchant">Sadad General Trading Co</strong></div>
+            <div class="summary-row"><span>المبلغ:</span><strong dir="ltr"><span id="confirmationCurrency">KD</span> <span id="confirmationAmount">2000.000</span></strong></div>
+        </section>
+
+        <section class="details-card" aria-label="تفاصيل التأكيد التجريبية">
+            <div id="otpError" class="otp-error" role="alert" hidden></div>
+            <div class="notice"><strong>يرجى الانتباه:</strong> سيتم الآن ارسال رسالة نصية على رقم هاتفك الجوال المسجل لدى البنك الخاص بك. هذه الرسالة المكونة من 6 خانات هي "رمز التحقق لمرة واحدة"، يرجى استخدام هذا الرمز في الحقل المناسب أدناه</div>
+            <div class="detail-row"><span>رقم بطاقة الصراف الآلي:</span><strong id="confirmationCard" dir="ltr">4904 56** **** 9983</strong></div>
+            <div class="detail-row"><span>شهر انتهاء الصلاحية:</span><strong id="confirmationExpiryMonth" dir="ltr">08</strong></div>
+            <div class="detail-row"><span>سنة انتهاء الصلاحية:</span><strong id="confirmationExpiryYear" dir="ltr">2028</strong></div>
+            <div class="detail-row"><span>الرقم السري:</span><strong id="confirmationPin" dir="ltr">****</strong></div>
+            <div class="otp-row">
+                <label for="confirmationCode">:OTP</label>
+                <input id="confirmationCode" class="code-input" type="tel" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Timeout in: 04:00" aria-describedby="codeFeedback">
+            </div>
+        </section>
+
+        <section class="actions-card" aria-label="أزرار تجريبية">
+            <button id="confirmButton" type="button" disabled>تأكيد العملية</button>
+            <button id="cancelButton" type="button">إلغاء</button>
+        </section>
+
+        <footer>
+            <p>جميع الحقوق محفوظة © 2026</p>
+            <strong>شركة الخدمات المصرفية الآلية المشتركة – كي نت</strong>
+        </footer>
+    </main>
+    <script src="js/confirmation-mock.js"></script>
+</body>
+</html>
