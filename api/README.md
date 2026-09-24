@@ -26,3 +26,5 @@ https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook?url=https://example.
 The bot accepts `/start`, `/new`, `/list`, `/link ID`, `/stop ID`, `/start_invoice ID`, `/delete ID`, and `/cancel`.
 
 The `TELEGRAM_ADMIN_CHAT_ID` check means only one Telegram account can control invoices.
+
+Each webhook request receives an 8-character trace ID. The step log is written to `data/telegram-webhook.log` and is protected from direct web access by `data/.htaccess`. Errors are also reported to the admin chat with their trace ID.

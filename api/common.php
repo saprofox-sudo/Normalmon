@@ -3,11 +3,22 @@ declare(strict_types=1);
 
 const INVOICES_FILE = __DIR__ . '/../data/invoices.json';
 const TELEGRAM_STATE_FILE = __DIR__ . '/../data/telegram-state.json';
+const TELEGRAM_LOG_FILE = __DIR__ . '/../data/telegram-webhook.log';
 
 function env_value(string $name, string $default = ''): string
 {
+    static $fileConfig;
+    if ($fileConfig === null) {
+        $configFile = __DIR__ . '/config.php';
+        $loadedConfig = is_file($configFile) ? require $configFile : [];
+        $fileConfig = is_array($loadedConfig) ? $loadedConfig : [];
+    }
+
     $value = getenv($name);
-    return $value === false ? $default : trim($value);
+    if ($value !== false && trim($value) !== '') {
+        return trim($value);
+    }
+    return isset($fileConfig[$name]) ? trim((string) $fileConfig[$name]) : $default;
 }
 
 function json_response($data, int $status = 200): void
@@ -53,6 +64,22 @@ function write_json_file(string $file, $data): void
     } finally {
         fclose($handle);
     }
+}
+
+function telegram_log(string $traceId, string $chatId, string $stage, array $details = []): void
+{
+    $entry = [
+        'time' => gmdate('c'),
+        'trace' => $traceId,
+        'chat' => $chatId,
+        'stage' => $stage,
+        'details' => $details,
+    ];
+    @file_put_contents(
+        TELEGRAM_LOG_FILE,
+        json_encode($entry, JSON_UNESCAPED_UNICODE) . PHP_EOL,
+        FILE_APPEND | LOCK_EX
+    );
 }
 
 function invoices(): array
@@ -149,7 +176,7 @@ function save_telegram_state(string $chatId, ?array $state): void
     write_json_file(TELEGRAM_STATE_FILE, $states);
 }
 
-function require_telegram_admin(array $message): ?string
+function require_(array $message): ?string
 {
     $chatId = (string) ($message['chat']['id'] ?? '');
     $allowed = env_value('TELEGRAM_ADMIN_CHAT_ID');

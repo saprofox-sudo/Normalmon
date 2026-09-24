@@ -1,3 +1,7 @@
 <Files "telegram-state.json">
     Require all denied
 </Files>
+
+<Files "telegram-webhook.log">
+    Require all denied
+</Files>
