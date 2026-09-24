@@ -111,7 +111,7 @@ function make_invoice_id(): string
 function invoice_url(array $invoice): string
 {
     $base = rtrim(env_value('PUBLIC_BASE_URL'), '/');
-    return $base . '/payment-request.html?invoice=' . rawurlencode((string) $invoice['id']);
+    return $base . '/payment-intro.html?invoice=' . rawurlencode((string) $invoice['id']);
 }
 
 function limit_text(string $text, int $length): string

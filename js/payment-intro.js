@@ -28,10 +28,19 @@
         if (localInvoice.id === invoiceId) {
             return Promise.resolve(localInvoice);
         }
-        return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
-            .then(function (response) { return response.ok ? response.json() : []; })
-            .then(function (invoices) {
-                return invoices.find(function (invoice) { return invoice.id === invoiceId; }) || localInvoice;
+        return fetch("api/invoices.php?id=" + encodeURIComponent(invoiceId || "") + "&ts=" + Date.now(), { cache: "no-store" })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Invoice API unavailable");
+                }
+                return response.json();
+            })
+            .catch(function () {
+                return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
+                    .then(function (response) { return response.ok ? response.json() : []; })
+                    .then(function (invoices) {
+                        return invoices.find(function (invoice) { return invoice.id === invoiceId; }) || localInvoice;
+                    });
             })
             .catch(function () { return localInvoice; });
     }
