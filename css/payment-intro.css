@@ -32,8 +32,7 @@ body { margin: 0; background: var(--page); color: var(--text); font-family: Cair
 .feedback { min-height: 28px; margin: 23px 0 0; font-size: 15px; }
 .payment-loading { position: fixed; inset: 0; z-index: 10; display: none; place-items: center; background: rgba(247,249,250,.86); }
 .payment-loading.is-visible { display: grid; }
-.payment-spinner { width: 62px; height: 62px; display: block; border: 8px solid #d6d9dc; border-top-color: #0077d5; border-radius: 50%; animation: payment-spin .7s linear infinite; }
-@keyframes payment-spin { to { transform: rotate(360deg); } }
+.payment-spinner { width: 202px; height: 202px; display: block; object-fit: contain; }
 .pay-button.is-loading { pointer-events: none; opacity: .65; }
 @media (min-width: 768px) {
     .intro-page { padding-top: clamp(42px, 8svh, 88px); }
