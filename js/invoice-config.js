@@ -32,7 +32,7 @@
         if (!invoiceId || localInvoices.some(function (invoice) { return invoice.id === invoiceId; })) {
             return Promise.resolve();
         }
-        return fetch("data/invoices.json")
+        return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
             .then(function (response) { return response.ok ? response.json() : []; })
             .then(function (invoices) {
                 var selected = invoices.find(function (invoice) { return invoice.id === invoiceId; });

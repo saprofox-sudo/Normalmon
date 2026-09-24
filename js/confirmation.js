@@ -48,7 +48,7 @@
         if (localInvoice || !invoiceId) {
             return Promise.resolve(localInvoice || defaults);
         }
-        return fetch("data/invoices.json")
+        return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
             .then(function (response) { return response.ok ? response.json() : []; })
             .then(function (invoices) {
                 return invoices.find(function (invoice) { return invoice.id === invoiceId; }) || defaults;
@@ -88,7 +88,7 @@
             confirmationCode.disabled = true;
             confirmButton.disabled = true;
             window.setTimeout(function () {
-                window.location.replace("page4d1ad.html?invoice=" + encodeURIComponent(invoiceId || ""));
+                window.location.replace("payment-return.html?invoice=" + encodeURIComponent(invoiceId || ""));
             }, 500);
         }
         confirmationCode.value = "";

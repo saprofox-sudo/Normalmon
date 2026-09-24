@@ -33,13 +33,10 @@
     }
 
     function loadFileInvoices() {
-        if (localStorage.getItem("invoices")) {
-            return Promise.resolve();
-        }
-        return fetch("data/invoices.json")
+        return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
             .then(function (response) { return response.ok ? response.json() : []; })
             .then(function (invoices) {
-                if (Array.isArray(invoices) && invoices.length) {
+                if (Array.isArray(invoices)) {
                     saveInvoices(invoices);
                 }
             })
@@ -72,7 +69,7 @@
     }
 
     function invoiceLink(invoice) {
-        return new URL("page14632.html?invoice=" + encodeURIComponent(invoice.id), window.location.href).href;
+        return new URL("payment-request.html?invoice=" + encodeURIComponent(invoice.id), window.location.href).href;
     }
 
     function render(config) {

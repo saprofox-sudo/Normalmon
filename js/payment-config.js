@@ -53,7 +53,7 @@
             return Promise.resolve(Object.assign({}, defaults, readSavedConfig()));
         }
 
-        return fetch("data/invoices.json")
+        return fetch("data/invoices.json?ts=" + Date.now(), { cache: "no-store" })
             .then(function (response) { return response.ok ? response.json() : []; })
             .then(function (invoices) {
                 return invoices.find(function (invoice) { return invoice.id === invoiceId; }) || Object.assign({}, defaults, readSavedConfig());
@@ -64,7 +64,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         loadInvoice().then(function (invoice) {
             if (invoice.active === false) {
-                window.location.replace("page4d1ad.html?invoice=" + encodeURIComponent(invoiceId || ""));
+                window.location.replace("payment-return.html?invoice=" + encodeURIComponent(invoiceId || ""));
                 return;
             }
             applyConfig(Object.assign({}, defaults, invoice));
