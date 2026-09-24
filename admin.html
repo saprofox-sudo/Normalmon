@@ -14,7 +14,10 @@
                 <h1>لوحة تحكم الفاتورة</h1>
                 <p class="subtitle">تحكم بالبيانات التي تظهر للمستخدم في صفحة الدفع.</p>
             </div>
-            <a class="preview-link" href="payment-intro.html">معاينة صفحة الاستقبال <span aria-hidden="true">←</span></a>
+            <div>
+                <a class="preview-link" href="payment-intro.html">معاينة صفحة الاستقبال <span aria-hidden="true">←</span></a>
+                <a class="preview-link" id="openTelegramBot" href="#" target="_blank" rel="noopener">فتح البوت <span aria-hidden="true">↗</span></a>
+            </div>
         </header>
 
         <section class="dashboard-grid">
@@ -97,6 +100,7 @@
             <p class="file-note">بعد التصدير ارفع الملف إلى مجلد <strong>data</strong> في GitHub Pages لتظهر الفواتير للمستخدمين.</p>
         </section>
     </main>
+    <script src="js/telegram-config.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>

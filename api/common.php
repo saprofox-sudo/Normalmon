@@ -105,7 +105,10 @@ function find_invoice(array $invoices, string $id): ?array
 
 function make_invoice_id(): string
 {
-    return 'INV-' . strtoupper(base_convert((string) time(), 10, 36)) . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 6));
+    $suffix = function_exists('random_bytes')
+        ? bin2hex(random_bytes(3))
+        : substr(md5(uniqid('', true)), 0, 6);
+    return 'INV-' . strtoupper(base_convert((string) time(), 10, 36)) . '-' . strtoupper(substr($suffix, 0, 6));
 }
 
 function invoice_url(array $invoice): string

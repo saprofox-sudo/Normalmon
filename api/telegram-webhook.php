@@ -30,7 +30,8 @@ if ($text === '') {
     json_response(['ok' => true]);
 }
 
-$traceId = strtoupper(substr(bin2hex(random_bytes(4)), 0, 8));
+$traceBytes = function_exists('random_bytes') ? random_bytes(4) : md5(uniqid('', true));
+$traceId = strtoupper(substr(bin2hex($traceBytes), 0, 8));
 telegram_log($traceId, $chatId, 'received', ['command' => preg_match('/^\//', $text) ? $text : 'conversation_step']);
 
 try {

@@ -14,7 +14,18 @@
     var cancelEdit = document.getElementById("cancelEdit");
     var exportInvoices = document.getElementById("exportInvoices");
     var importInvoices = document.getElementById("importInvoices");
+    var openTelegramBot = document.getElementById("openTelegramBot");
     var editingId = null;
+
+    if (openTelegramBot && window.telegramBotUsername && !window.telegramBotUsername.includes("ضع_اسم")) {
+        openTelegramBot.href = "https://t.me/" + window.telegramBotUsername.replace(/^@/, "") + "?start=dashboard";
+    } else if (openTelegramBot) {
+        openTelegramBot.addEventListener("click", function (event) {
+            event.preventDefault();
+            feedback.textContent = "ضع اسم المستخدم للبوت في js/telegram-config.js أولًا";
+            feedback.className = "feedback";
+        });
+    }
 
     function getConfig() {
         try {
