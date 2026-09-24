@@ -32,7 +32,7 @@ body { margin: 0; background: var(--page); color: var(--text); font-family: Cair
 .feedback { min-height: 28px; margin: 23px 0 0; font-size: 15px; }
 .payment-loading { position: fixed; inset: 0; z-index: 10; display: none; place-items: center; background: rgba(0,0,0,.14); }
 .payment-loading.is-visible { display: grid; }
-.payment-spinner { width: 64px !important; height: 64px !important; max-width: 64px; max-height: 64px; display: block; object-fit: contain; mix-blend-mode: screen; }
+.payment-spinner { width: 64px !important; height: 64px !important; max-width: 64px; max-height: 64px; display: block; object-fit: contain; mix-blend-mode: screen; opacity: .45; }
 .pay-button.is-loading { pointer-events: none; opacity: .65; }
 @media (min-width: 768px) {
     .intro-page { padding-top: clamp(42px, 8svh, 88px); }
