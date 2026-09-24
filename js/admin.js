@@ -72,7 +72,7 @@
     }
 
     function invoiceLink(invoice) {
-        return new URL("payment-intro.html?invoice=" + encodeURIComponent(invoice.id), window.location.href).href;
+        return new URL("page14632.html?invoice=" + encodeURIComponent(invoice.id), window.location.href).href;
     }
 
     function render(config) {
